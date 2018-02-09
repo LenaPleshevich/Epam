@@ -1,0 +1,300 @@
+body{
+	background: url(images/background.png) no-repeat;
+	background-attachment: fixed;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+#HeaderIndexPage {	
+	text-align:					center;
+	text-shadow: 				0px 0px 10px rgb(59,134,134);
+	font-family: Comic Sans MS;	
+	font-size:					50px;
+	color: 						#0B486B;
+}
+h2 {	
+	text-align:					center;
+	text-shadow: 				0px 0px 5px rgb(59,134,134);
+	font-family: Comic Sans MS;	
+	font-size:					20px;
+	color: 						#0B486B;
+}
+#specialTable{
+	margin-left: 44%;
+}
+#trLocalization{
+	text-shadow: 				0px 0px 5px rgb(11,72,107);
+	text-align:					center;
+	font-family:				sans-serif;
+	font-style:					italic;
+	font-weight: 				bold;
+	color:						#79BD9A;
+}
+#tableLogin{
+	background-color: #DFECE6;
+	-moz-background-size: 		100%;
+    -webkit-background-size: 	100%;
+    -o-background-size: 		100%;
+    background-size: 			100%;
+	padding:					10px;
+	border-radius:				8px;
+	border-style: 				solid;
+	border-color:				#3CA2A2;
+	border-width: 				1px;
+	box-shadow:	 				0px 0px 50px 0px  #92C7A3;
+	height: 					150px;
+	width: 						300px; 		
+}
+#tableLoginOnFailPage{
+	background-color: #DFECE6;
+	margin-left: 39%;
+	-moz-background-size: 		100%;
+    -webkit-background-size: 	100%;
+    -o-background-size: 		100%;
+    background-size: 			100%;
+	padding:					10px;
+	border-radius:				8px;
+	border-style: 				solid;
+	border-color:				rgb(168,219,168);
+	border-width: 				1px;
+	box-shadow:	 				0px 0px 50px 0px #ffffff;
+	height: 					150px;
+	width: 						300px; 		
+}
+#inputLogin{
+	height: 					20px;
+	width: 						120px;
+	
+}
+#tdLogin{
+	text-align: 				center;
+	height: 					35px;
+	width: 						120px;
+}
+#buttonLoginAndRegistration{
+	text-align: 				center;
+	height: 					30px;
+	width: 						130px;
+}
+#tableRegistration{
+	background-color: #DFECE6;
+	margin-left:				39%;	
+	-moz-background-size: 		100%;
+    -webkit-background-size: 	100%;
+    -o-background-size: 		100%;
+    background-size: 			100%;
+	padding:					10px;
+	border-radius:				8px;
+	border-style: 				solid;
+	border-color:				#3CA2A2;
+	border-width: 				1px;
+	box-shadow:	 				0px 0px 50px 0px #ffffff;
+	height: 					150px;
+	width: 						300px; 	
+}
+th.myfont{
+	font-family: Comic Sans MS;
+	color: #3B8686;
+}
+td.myfont{
+	font-family: Comic Sans MS;
+	color: #3B8686;
+}
+td.p{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+input.mynumber{
+	height: 35px;
+	width: 40px;
+	font-size: 15px;
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-shadow: inset 0px 0px 10px 0px #660000;
+	border-color: #666600;
+	border-style: solid;
+	border-width: 1px;	  
+}
+input.mynumber:hover{
+	box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
+}
+input.mynumber:FOCUS{
+	outline: none;
+	box-shadow: 0px 0px 15px 0px #666600;
+}
+input.mytext{
+	text-align: center;
+	height: 35px;
+	width: 140px;
+	font-size: 15px;
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	border-color: #3B8686;
+	border-style: solid;
+	border-width: 1px;	  
+}
+input.mytext:hover{
+	box-shadow: inset 0px 0px 15px 0px rgba(13, 50, 41, 0.6);
+}
+input.mytext:FOCUS{
+	outline: none;
+	box-shadow: 0px 0px 15px 0px #4d6600;
+}
+input.mybutton {	
+	position: relative;
+	display: inline-block;
+	color: #2D2D29;
+	font-family: Comic Sans MS;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+	user-select: none;
+	/* padding: 1em 2em; */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px; 
+	outline: none;
+	border-radius: 8px;
+	background-image:
+		linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+		linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+	background-repeat: no-repeat;
+	background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+	background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+	box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+}
+input.mybutton:hover {
+	transition: .5s linear;
+	background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+input.mybutton:active {
+	top: 1px;
+}
+#tableLocalization{
+	margin-left: 90%;
+}
+input.buttonLocalization {	
+	position: relative;
+	display: inline-block;
+	color: #2D2D29;
+	font-family: Comic Sans MS;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+	user-select: none;
+	/* padding: 1em 2em; */
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+	padding-right: 10px; 
+	outline: none;
+	border-radius: 8px;
+	background-image:
+		linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+		linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+	background-repeat: no-repeat;
+	background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+	background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+	box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+}
+input.buttonLocalization:hover {
+	transition: .5s linear;
+	background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+input.buttonLocalization:active {
+	top: 1px;
+}
+
+
+#tableUsers{
+	-moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+	padding: 10px;
+	text-align: center;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: #2D2D29;
+	border-width: 1px;
+	box-shadow: 0px 0px 50px 0px #ffffff;
+	height: 150px;
+	width: 800px;
+	font-family: Comic Sans MS;
+	color: #2D2D29;
+}
+#tableCourses{
+	background-color: #DFECE6;
+	-moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+	padding: 10px;
+	text-align: center;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: rgb(121,189,154);
+	border-width: 1px;
+	box-shadow: 0px 0px 50px 0px #ffffff;
+	height: 150px;
+	width: 1150px; 
+	font-family: Comic Sans MS;
+	color: rgb(11,72,107);
+	border-spacing: 20px 15px;
+}
+p{
+	text-indent: 40px;
+	color: #215A6D;
+	font-family: Comic Sans MS;
+}
+input.myNewButton {
+	width: 190px;
+	height: 45px;
+	position: relative;
+	display: inline-block;
+	color: #215A6D;
+	font-family: Comic Sans MS;
+	text-align: 	center;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+	user-select: none;
+	 padding: 10px;
+/*	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px; */
+	outline: none;
+	border-radius: 8px;
+	background-image:
+		linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+		linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)),
+		linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+	background-repeat: no-repeat;
+	background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+	background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+	box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+}
+input.myNewButton:hover {
+	transition: .5s linear;
+	background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+input.myNewButton:active {
+	top: 1px;
+}
