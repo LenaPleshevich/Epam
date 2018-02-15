@@ -35,12 +35,10 @@ public final class DoGoToAssignTeacherCommand implements ICommand {
 			HttpSession session = request.getSession(true);
 			String url = generateURL(request);
 			session.setAttribute(RequestParameterName.URL, url);
-			
 			DaoType daoType = DaoType.MYSQL;
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
-			
-			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfUsers() - 1)/10 + 1)){
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfUsers() - 1)/3 + 1)){
 				page = JspPageName.ERROR_PAGE;
 				return page;
 			}
@@ -48,7 +46,7 @@ public final class DoGoToAssignTeacherCommand implements ICommand {
 			if (course == null){
 				page = JspPageName.ERROR_PAGE;
 			} else {
-				int numberOfCourses = dbDao.getNumberOfCourses();
+				int numberOfCourses = dbDao.getNumberOfAllCourses();
 				List<User> teacher = dbDao.getTeacher(Integer.parseInt(RequestParameterName.PAGE_NUMBER));
 				int size =  teacher.size();
 				page = JspPageName.ASSIGN_TEACHER_PAGE;

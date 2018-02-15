@@ -24,6 +24,7 @@
 <fmt:message bundle="${loc}" key="local.validateLastNameMessage" var="validateLastNameMessage"/>
 <fmt:message bundle="${loc}" key="local.messageBusyEmail" var="validateMessageBusyEmail"/>
 <fmt:message bundle="${loc}" key="local.messageIncorrectNames" var="validateMessageIncorrectNames"/>
+<fmt:message bundle="${loc}" key="local.messageSuccessfulRegistration" var="validateMessageSuccessfulRegistration"/>
 <fmt:message bundle="${loc}" key="local.registrationPage" var="registrationPage"/>
 <script type="text/javascript">
 <!--
@@ -96,6 +97,7 @@ function validate_form ( )
 			<c:if test="${messageBusyEmail=='true'}">${validateMessageBusyEmail}</c:if>
 			<c:if test="${messageIncorrectPassword=='true'}">${validateDontMatchPassword}</c:if>
 			<c:if test="${messageIncorrectNames=='true'}">${validateMessageIncorrectNames}</c:if>
+			<c:if test="${messageSuccessfulRegistration=='true'}">${validateMessageSuccessfulRegistration}</c:if>
 		</th>
 		<tr>
 			<td class="myfont">

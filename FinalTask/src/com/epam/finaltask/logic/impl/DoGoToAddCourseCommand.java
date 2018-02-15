@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * 	This class executes a go to page to add course
  */
-public final class DoGoToAddCourse implements ICommand {
+public final class DoGoToAddCourseCommand implements ICommand {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -20,6 +20,7 @@ public final class DoGoToAddCourse implements ICommand {
 		HttpSession session = request.getSession(true);	
 		String url = generateURL(request);
 		session.setAttribute(RequestParameterName.URL, url);
+		session.setAttribute(RequestParameterName.ID_COURSE, request.getParameter(RequestParameterName.ID_COURSE));
 		return page;
 	}
 	

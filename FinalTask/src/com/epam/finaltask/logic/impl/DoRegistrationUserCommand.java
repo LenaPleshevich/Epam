@@ -24,8 +24,8 @@ public final class DoRegistrationUserCommand implements ICommand{
 	private static final Logger logger = Logger.getRootLogger();
 	
 	private static final String REGEXP_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	private static final String REGEXP_PASSWORD = "[_A-Za-z0-9-\\+]+";
-	private static final String REGEXP_NAME = "^[A-Za-z]+$";
+	private static final String REGEXP_PASSWORD = "[_A-Za-zА-Яа-я0-9-\\+]+";
+	private static final String REGEXP_NAME = "^[A-Za-zА-Яа-я]+$";
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -58,7 +58,8 @@ public final class DoRegistrationUserCommand implements ICommand{
 					if ((user.getFirstNameUser().matches(REGEXP_NAME)) && (user.getLastNameUser().matches(REGEXP_NAME))){
 						boolean added = dbDao.addUser(user);			
 						if (added){
-							page = JspPageName.INDEX_PAGE;
+							page = JspPageName.REGISTRATION_PAGE;
+							request.setAttribute(RequestParameterName.MESSAGE_SUCCESSFUL_REGISTRATION, true);
 						} else {				
 							page = JspPageName.REGISTRATION_PAGE;
 						}

@@ -1,5 +1,4 @@
 package com.epam.finaltask.dao.entity;
-
 /**
  * This class represents the entity of the Task
  */
@@ -21,7 +20,8 @@ public class Task {
     }
 
     public String getDeadline() {
-        return deadline;
+        String[] arr = deadline.split("-");
+        return arr[2]+ "-" + arr[1] + "-" + arr[0];
     }
 
     public void setDeadline(String deadline) {
@@ -61,22 +61,12 @@ public class Task {
     }
 
     public String getAssignmentTime() {
-        return assignmentTime;
+        String[] arr = assignmentTime.split("-");
+        return arr[2]+ "-" + arr[1] + "-" + arr[0];
     }
 
     public void setAssignmentTime(String assignmentTime) {
         this.assignmentTime = assignmentTime;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "idTask=" + idTask +
-                ", idCourse=" + idCourse +
-                ", summary='" + summary + '\'' +
-                ", nameTask='" + nameTask + '\'' +
-                ", assignmentTime='" + assignmentTime + '\'' +
-                ", deadline='" + deadline + '\'' +
-                '}';
-    }
 }

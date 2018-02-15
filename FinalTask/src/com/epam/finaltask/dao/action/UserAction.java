@@ -10,9 +10,9 @@ import com.epam.finaltask.logic.exception.CommandException;
 import org.apache.log4j.Logger;
 
 /**
- * Created by Pleshevich on 08.02.2018.
+ * This class represents the actions  for work with user
  */
-public class RoleAction {
+public class UserAction {
     private static final Logger logger = Logger.getRootLogger();
     public static NameRole addRoleName(int idRole){
         switch (idRole){
@@ -52,34 +52,24 @@ public class RoleAction {
 
             isDelete = dbDao.deleteUserInCourseStatus(idUser);
 
-            if(isDelete){
+            if(isDelete) {
                 result = true;
-            } else {
-                return false;
             }
             isDelete = dbDao.deleteUserInCourses(idUser);
-            if(isDelete){
+            if(isDelete) {
                 result = true;
-            } else {
-                return false;
             }
             isDelete = dbDao.deleteTeacher(idUser);
             if(isDelete){
                 result = true;
-            } else {
-                return false;
             }
             isDelete = dbDao.deleteUserInResults(idUser);
             if(isDelete){
                 result = true;
-            } else {
-                return false;
             }
             isDelete = dbDao.deleteUserInResponses(idUser);
             if(isDelete){
                 result = true;
-            } else {
-                return false;
             }
             isDelete = dbDao.deleteUser(idUser);
             if(isDelete){
@@ -87,10 +77,41 @@ public class RoleAction {
             } else {
                 return false;
             }
-
         } catch (DBDaoException e) {
             logger.error("DBDaoException is thrown when trying to delete users", e);
             throw new CommandException("DBDaoException is thrown when trying to delete users", e);
+        }
+        return result;
+    }
+
+    public static boolean deleteCourse(int idCourse) throws CommandException {
+        DBDao dbDao = null;
+        boolean result = false;
+        boolean isDelete = false;
+        try {
+            DaoType daoType = DaoType.MYSQL;
+            dbDao = DBDaoFactory.getInstance().getDao(daoType);
+            isDelete = dbDao.deleteTask(idCourse);
+            if(isDelete){
+                result = true;
+            }
+            isDelete = dbDao.deleteCoursesUsers(idCourse);
+            if(isDelete){
+                result = true;
+            }
+            isDelete = dbDao.deleteStatusCourse(idCourse);
+            if(isDelete){
+                result = true;
+            }
+            isDelete = dbDao.deleteCourse(idCourse);
+            if(isDelete){
+                result = true;
+            } else {
+                return false;
+            }
+        } catch (DBDaoException e) {
+            logger.error("DBDaoException is thrown when trying to delete course", e);
+            throw new CommandException("DBDaoException is thrown when trying to delete course", e);
         }
         return result;
     }

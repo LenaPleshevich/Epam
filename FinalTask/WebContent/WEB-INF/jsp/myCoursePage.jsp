@@ -8,33 +8,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>${informationAboutCourse}</title>
 <link rel="stylesheet" type="text/css" href="myStyle.css">
-
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="localization.local" var="loc"/>
-
-	<fmt:message bundle="${loc}" key="local.informationAboutCourse" var="informationAboutCourse"/>
-	<fmt:message bundle="${loc}" key="local.backToMyCourses" var="backToMyCourses"/>
-	<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
-	<fmt:message bundle="${loc}" key="local.leaveCourse" var="leaveCourse"/>
-	<fmt:message bundle="${loc}" key="local.nameTask" var="nameTask"/>
-	<fmt:message bundle="${loc}" key="local.idTask" var="idTask"/>
-	<fmt:message bundle="${loc}" key="local.idCourse" var="idCourse"/>
-	<fmt:message bundle="${loc}" key="local.summary" var="summary"/>
-	<fmt:message bundle="${loc}" key="local.assignmentTime" var="assignmentTime"/>
-	<fmt:message bundle="${loc}" key="local.deadline" var="deadline"/>
-	<fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
-	<fmt:message bundle="${loc}" key="local.statusCourse" var="statusCourse"/>
-	<fmt:message bundle="${loc}" key="local.go" var="go"/>
-	<fmt:message bundle="${loc}" key="local.of" var="of"/>
-	<fmt:message bundle="${loc}" key="local.messageIncorrectNumberPage" var="messageIncorrectNumberPage"/>
-	<fmt:message bundle="${loc}" key="local.emptyListTasks" var="emptyListTasks"/>
+<fmt:message bundle="${loc}" key="local.addTask" var="addTask"/>
+<fmt:message bundle="${loc}" key="local.informationAboutCourse" var="informationAboutCourse"/>
+<fmt:message bundle="${loc}" key="local.backToMyCourses" var="backToMyCourses"/>
+<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
+<fmt:message bundle="${loc}" key="local.leaveCourse" var="leaveCourse"/>
+<fmt:message bundle="${loc}" key="local.nameTask" var="nameTask"/>
+<fmt:message bundle="${loc}" key="local.idTask" var="idTask"/>
+<fmt:message bundle="${loc}" key="local.idCourse" var="idCourse"/>
+<fmt:message bundle="${loc}" key="local.summary" var="summary"/>
+<fmt:message bundle="${loc}" key="local.assignmentTime" var="assignmentTime"/>
+<fmt:message bundle="${loc}" key="local.deadline" var="deadline"/>
+<fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
+<fmt:message bundle="${loc}" key="local.statusCourse" var="statusCourse"/>
+<fmt:message bundle="${loc}" key="local.go" var="go"/>
+<fmt:message bundle="${loc}" key="local.of" var="of"/>
+<fmt:message bundle="${loc}" key="local.messageIncorrectNumberPage" var="messageIncorrectNumberPage"/>
+<fmt:message bundle="${loc}" key="local.emptyListTasks" var="emptyListTasks"/>
 
 	<script type="text/javascript">
 		<!--
 		function validate_form ( )
 		{
 			valid = true;
-
 			if ( document.contact_form.pageNumber.value == ""){
 				alert ("${messageIncorrectNumberPage}");
 				valid = false;
@@ -55,10 +53,10 @@
 					}
 				}
 			}
-
 			return valid;
 		}//-->
 	</script>
+
 </head>
 <body>
 <table id="tableLocalization">
@@ -79,25 +77,31 @@
 		</td>
 	</tr>
 </table>
-<h1 id="HeaderIndexPage" >${informationAboutCourse}</h1>
-<table id="tableCourses" align="center">
+<h1 id="HeaderIndexPage" >${name}</h1>
+<table id="tableForPanel" align="center">
 	<tr>
-		<td>
-			${nameCourse} - ${name}
-		</td>
-		<td>
-			${idCourse} - ${course.idCourse}
-		</td>
-		<c:if test="${status=='набор'}">
-		<td>
-			<form action="Controller" method="post">
-				<input type="hidden" name="command" value="leave_course">
-				<input type="hidden" name="idCourse" value="${course.idCourse}">
-				<input type="hidden" name="pageNumber" value="${currentNumberPage}">
-				<input type="submit" name="leaveCourse" value="${leaveCourse}" class="mybutton">
-			</form>
-		</td>
-	</c:if>
+			<c:choose>
+				<c:when test="${sessionScope.user.idRoleUser== 2}">
+					<td colspan="5">
+						<form action="Controller" method="post">
+							<input type="hidden" name="command" value="leave_course">
+							<input type="hidden" name="idCourse" value="${sessionScope.course.idCourse}">
+							<input type="hidden" name="pageNumber" value="${currentNumberPage}">
+							<input type="submit" name="leaveCourse" value="${leaveCourse}" class="mybutton">
+						</form>
+					</td>
+				</c:when>
+				<c:when test="${sessionScope.user.idRoleUser== 3}">
+					<td colspan="5">
+						<form action="Controller" method="post">
+							<input type="hidden" name="pageNumber" value="${currentNumberPage}">
+							<input type="hidden" name="command" value="go_to_add_task">
+							<input type="hidden" name="idCourse" value="${sessionScope.course.idCourse}">
+							<input type="submit" name="addTask" value="${addTask}" class="mybutton">
+						</form>
+					</td>
+				</c:when>
+			</c:choose>
 	</tr>
 </table>
 <c:choose>
@@ -109,7 +113,6 @@
 				<th>${summary}</th>
 				<th>${assignmentTime}</th>
 				<th>${deadline}</th>
-				<th>${idTask}</th>
 			</tr>
 			<c:forEach var="task" items="${tasks}">
 				<tr>
@@ -117,22 +120,26 @@
 					<td>${task.summary}</td>
 					<td>${task.assignmentTime}</td>
 					<td>${task.deadline}</td>
-					<td>${task.idTask}</td>
 					<td>
-						<form action="Controller" method="post">
-							<input type="hidden" name="pageNumber" value="${currentNumberPage}">
-							<input type="hidden" name="command" value="show_my_task">
-							<input type="hidden" name="idTask" value="${task.idTask}">
-							<input type="hidden" name="idCourse" value="${course.idCourse}">
-							<input type="submit" name="showTasks" value="${readMore}" class="mybutton">
-						</form>
+						<c:choose>
+							<c:when test="${sessionScope.user.idRoleUser== 2}">
+								<form action="Controller" method="post">
+									<input type="hidden" name="pageNumber" value="${currentNumberPage}">
+									<input type="hidden" name="command" value="show_my_task">
+									<input type="hidden" name="idTask" value="${task.idTask}">
+									<input type="hidden" name="idCourse" value="${sessionScope.course.idCourse}">
+									<input type="submit" name="showTasks" value="${readMore}" class="mybutton">
+								</form>
+							</c:when>
+						</c:choose>
 					</td>
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					<form name="contact_form" action="Controller" method="post" onsubmit="return validate_form ( );" >
-						<input type="hidden" name="command" value="show_my_tasks">
+						<input type="hidden" name="command" value="show_my_course">
+						<input type="hidden" name="idCourse" value="${sessionScope.course.idCourse}">
 						<input type="text" name="pageNumber" value="${currentNumberPage}" class="mynumber">
 						<input type="hidden" name="numberOfPage" value="${numberOfPage}">
 							${of} ${numberOfPage}
@@ -141,11 +148,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					<form action="Controller" method="post">
 						<input type="hidden" name="command" value="show_my_courses">
 						<input type="submit" name="showCourses" value="${ backToMyCourses}" class="mybutton">
-						<input type="hidden" name="pageNumber" value="${currentNumberPage}">
+						<input type="hidden" name="pageNumber" value="1">
 					</form>
 				</td>
 			</tr>
@@ -156,10 +163,10 @@
 		<form action="Controller" method="post">
 			<table id="specialTable">
 				<tr>
-					<td>
+					<td colspan="5">
 						<input type="hidden" name="command" value="show_my_courses">
 						<input type="submit" name="showCourses" value="${ backToMyCourses}" class="mybutton">
-						<input type="hidden" name="pageNumber" value="${currentNumberPage}">
+						<input type="hidden" name="pageNumber" value="${1}">
 
 					</td>
 				</tr>

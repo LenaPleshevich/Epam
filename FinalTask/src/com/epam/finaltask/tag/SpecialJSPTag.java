@@ -53,7 +53,7 @@ public class SpecialJSPTag extends TagSupport {
 				out.write("<td>" + user.getEmailUser() + 		"</td>");
 				out.write("<td>" + user.getFirstNameUser() + 	"</td>");
 				out.write("<td>" + user.getLastNameUser() + 	"</td>");
-				out.write("<td>" + user.getNameRole() + 	"</td>");
+				out.write("<td>" + user.getNameRole().toString().toLowerCase() + 	"</td>");
 				if (session.getAttribute(RequestParameterName.ROLE).toString().equals(PARAMETER_ADMIN)){
 					out.write("<td>");
 					out.write("<form action=\"Controller\" method=\"post\">");

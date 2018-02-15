@@ -41,13 +41,4 @@ public class Result {
         this.mark = mark;
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "idResult=" + idResult +
-                ", response=" + response +
-                ", feedback='" + feedback + '\'' +
-                ", mark=" + mark +
-                '}';
-    }
 }

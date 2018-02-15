@@ -2,6 +2,8 @@ package com.epam.finaltask.controller.command;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.epam.finaltask.logic.impl.DoShowResponsesCommand;
 import com.epam.finaltask.logic.impl.*;
 import org.apache.log4j.Logger;
 
@@ -28,8 +30,12 @@ public class CommandHelper {
 		commands.put(CommandName.NO_SUCH_COMMAND, new DoNoSuchCommand());
 		commands.put(CommandName.SHOW_USERS, new DoShowUsersCommand());
 		commands.put(CommandName.ADD_COURSE, new DoAddCourseCommand());
-		commands.put(CommandName.GO_TO_ADD_COURSE, new DoGoToAddCourse());
-		commands.put(CommandName.GO_TO_ASSIGN_TEACHER, new DoGoToAssignTeacherCommand());
+		commands.put(CommandName.GO_TO_ADD_COURSE, new DoGoToAddCourseCommand());
+		commands.put(CommandName.ADD_RESULT, new DoAddResultCommand());
+		commands.put(CommandName.GO_TO_ADD_RESULT, new DoGoToAddResultCommand());
+		commands.put(CommandName.ADD_TASK, new DoAddTaskCommand());
+		commands.put(CommandName.GO_TO_ADD_TASK, new DoGoToAddTaskCommand());
+		commands.put(CommandName.CHOICE_TEACHER, new DoGoToAssignTeacherCommand());
 		commands.put(CommandName.ASSIGN_TEACHER, new DoAssignTeacherCommand());
 		commands.put(CommandName.SHOW_COURSES, new DoShowCoursesCommand());
 		commands.put(CommandName.SHOW_COURSE, new DoShowCourseCommand());
@@ -42,7 +48,12 @@ public class CommandHelper {
 		commands.put(CommandName.GO_TO_REGISTRATION_ON_COURSE, new DoGoRegistrationOnCourseCommand());
 		commands.put(CommandName.CHANGE_ROLE, new DoChangeRoleCommand());
 		commands.put(CommandName.DELETE_USER, new DoDeleteUserCommand());
-
+		commands.put(CommandName.GO_TO_CHANGE_COURSE, new DoGoToChangeCourseCommand());
+		commands.put(CommandName.CHANGE_COURSE, new DoChangeCourseCommand());
+		commands.put(CommandName.DELETE_COURSE, new DoDeleteCourseCommand());
+		commands.put(CommandName.SHOW_TEACHERS, new DoShowTeachersCommand());
+		commands.put(CommandName.SHOW_TEACHERS_COURSES, new DoShowTeachersCoursesCommand());
+		commands.put(CommandName.SHOW_RESPONSES, new DoShowResponsesCommand());
 	}
 	
 	public static CommandHelper getInstance(){

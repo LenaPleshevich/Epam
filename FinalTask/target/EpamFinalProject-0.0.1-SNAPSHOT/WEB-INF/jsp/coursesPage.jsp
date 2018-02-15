@@ -94,7 +94,6 @@ function validate_form ( )
 				<th>${endDateCourse}</th>
 				<th>${maxNumberStudents}</th>
 				<th>${description}</th>
-				<th>${idCourse}</th>
 			</tr>
 			<c:forEach var="course" items="${courses}">
 				<tr>
@@ -104,7 +103,6 @@ function validate_form ( )
 					<td>${course.endDateCourse}</td>
 					<td>${course.maxNumberStudentsCourse}</td>
 					<td>${course.description}</td>
-					<td>${course.idCourse}</td>
 					<td>
 						<form action="Controller" method="post">
 							<input type="hidden" name="pageNumber" value="${currentNumberPage}">
@@ -117,9 +115,9 @@ function validate_form ( )
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="4">
+				<td colspan="6">
 					<form name="contact_form" action="Controller" method="post" onsubmit="return validate_form ( );" >
-						<input type="hidden" name="command" value="show_my_courses">
+						<input type="hidden" name="command" value="show_courses">
 						<input type="text" name="pageNumber" value="${currentNumberPage}" class="mynumber">
 						<input type="hidden" name="numberOfPage" value="${numberOfPage}">
 							${of} ${numberOfPage}
@@ -128,7 +126,7 @@ function validate_form ( )
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="6">
 					<form action="Controller" method="post">
 						<input type="hidden" name="command" value="back_to_home_page">
 						<input type="submit" name="BackToTheHomePage" value="${ backToHomePage}" class="mybutton">

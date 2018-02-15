@@ -40,19 +40,19 @@ public final class DoLeaveCourseCommand implements ICommand {
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
 			Integer idUser = ((User)request.getSession(true).getAttribute(RequestParameterName.USER)).getIdUser();
-			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfTasks(idCourse) - 1)/10 + 1)){
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfTasks(idCourse) - 1)/3 + 1)){
 				page = JspPageName.ERROR_PAGE;
 				return page;
 			}
-
 			Course course = dbDao.getCourse(idCourse);
 			if (course != null){
 					boolean isLeave = dbDao.leaveCourse(idCourse,idUser);
 					if (isLeave){
 						Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
 						List<Object> courses = dbDao.getCourses(idUser, pageNumber);
+						boolean isDelete = dbDao.deleteUserInCourseStatus(idUser);
 						int numberOfCourses = dbDao.getNumberOfCourses(idUser);
-						int numberOfPage = (numberOfCourses - 1)/10 + 1;
+						int numberOfPage = (numberOfCourses - 1)/3 + 1;
 						page = JspPageName.MY_COURSES_PAGE;
 						request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE,numberOfCourses);
 						request.setAttribute(RequestParameterName.NUMBER_OF_PAGE,numberOfPage);

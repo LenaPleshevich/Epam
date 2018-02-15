@@ -28,6 +28,7 @@
 <fmt:message bundle="${loc}" key="local.validatePasswordMessage" var="validatePasswordMessage"/>
 <fmt:message bundle="${loc}" key="local.addCourse" var="addCourse"/>
 <fmt:message bundle="${loc}" key="local.assignTeachers" var="assignTeachers"/>
+<fmt:message bundle="${loc}" key="local.checkTasks" var="checkTasks"/>
 
 <script type="text/javascript">
 <!--
@@ -98,7 +99,7 @@ function validate_form ( )
 				    					<form action="Controller" method="post">
 				    						<input type="hidden" name="pageNumber" value="1">
 				    						<input type="hidden" name="command" value="show_my_courses">
-				    						<input type="submit" name="ShowMyOrders" value="${showMyCourses}" class="myNewButton">
+				    						<input type="submit" name="ShowMyCourses" value="${showMyCourses}" class="myNewButton">
 				    					</form>
 				    				</td>
 				    			</tr>
@@ -131,6 +132,26 @@ function validate_form ( )
 					    			</td>
 					    		</tr>
 					    	</c:when>
+							<c:when test="${sessionScope.user.idRoleUser== 3}">
+								<tr>
+									<td id="tdLogin">
+										<form action="Controller" method="post">
+											<input type="hidden" name="pageNumber" value="1">
+											<input type="hidden" name="command" value="show_teachers_courses">
+											<input type="submit" name="showMyCourses" value="${showMyCourses}" class="myNewButton">
+										</form>
+									</td>
+								</tr>
+								<tr>
+									<td id="tdLogin">
+										<form action="Controller" method="post">
+											<input type="hidden" name="command" value="show_responses">
+											<input type="hidden" name="pageNumber" value="1">
+											<input type="submit" name="checkTasks" value="${checkTasks}" class="myNewButton">
+										</form>
+									</td>
+								</tr>
+							</c:when>
 			    		</c:choose>
 			    		<tr>
 			    			<td id="tdLogin">
@@ -170,10 +191,13 @@ function validate_form ( )
 				</c:otherwise>
 			</c:choose>
 		</td>
-		<td rowspan="2" class="p">
-			<p>	${oneMessage}</p>
-			<p>	${twoMessage}</p>
-						
+		<td>
+			<table id="tableMessages">
+				<td>
+					<p>	${oneMessage}</p>
+					<p>	${twoMessage}</p>
+				</td>
+			</table>
 		</td>
 	</tr>
 	<tr>

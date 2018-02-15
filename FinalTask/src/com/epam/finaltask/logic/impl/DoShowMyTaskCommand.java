@@ -25,7 +25,6 @@ public final class DoShowMyTaskCommand implements ICommand {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 		String page = null;
 		if (!validateRequest(request)){
-			logger.error("ERROR");
 			page = JspPageName.ERROR_PAGE;
 			return page;
 		}
@@ -38,8 +37,9 @@ public final class DoShowMyTaskCommand implements ICommand {
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer idUser = ((User)request.getSession(true).getAttribute(RequestParameterName.USER)).getIdUser();
 			Integer idTask = Integer.parseInt(request.getParameter(RequestParameterName.ID_TASK));
+			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
 			Task task = dbDao.getTask(idTask);
-			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfCourses(idUser) - 1)/10 + 1)){
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfTasks(idCourse) - 1)/3 + 1)){
 				page = JspPageName.ERROR_PAGE;
 				return page;
 			}
@@ -49,9 +49,9 @@ public final class DoShowMyTaskCommand implements ICommand {
 			if(taskStatus.toString().equals("PASSED")) {
 				Response responseTask= dbDao.getResponse(idTask, idUser);
 				Result result = dbDao.getResult(responseTask.getIdResponse());
-				request.setAttribute(RequestParameterName.RESULT, result);
+				session.setAttribute(RequestParameterName.RESULT, result);
 			}
-			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
+
 			if (taskStatus == null){
 				page = JspPageName.ERROR_PAGE;
 			} else {			

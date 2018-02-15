@@ -52,12 +52,10 @@ public final class DoLoginCommand implements ICommand{
 				session.setAttribute(RequestParameterName.IS_LOGGED, true);				
 				session.setAttribute(RequestParameterName.ROLE, user.getIdRoleUser());
 			}
-			
 		} catch (DBDaoException e){
 			logger.error("DBDaoException is thrown when trying to login", e);
 			throw new CommandException("DBDaoException is thrown when trying to login", e);
-		} 
-		
+		}
 		return page;
 	}
 	

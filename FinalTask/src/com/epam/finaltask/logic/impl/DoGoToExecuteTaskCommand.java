@@ -27,7 +27,6 @@ public final class DoGoToExecuteTaskCommand implements ICommand {
 		String url = generateURL(request);
 		session.setAttribute(RequestParameterName.URL, url);
 		DBDao dbDao = null;
-
 		try{
 			Integer idTask = Integer.parseInt(request.getParameter(RequestParameterName.ID_TASK));
 			DaoType daoType = DaoType.MYSQL;

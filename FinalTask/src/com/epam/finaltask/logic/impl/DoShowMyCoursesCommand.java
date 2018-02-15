@@ -39,10 +39,13 @@ public final class DoShowMyCoursesCommand implements ICommand {
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			int idUser = ((User)session.getAttribute(RequestParameterName.USER)).getIdUser();
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
-
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfCourses(idUser) - 1)/2 + 1)){
+				page = JspPageName.ERROR_PAGE;
+				return page;
+			}
 			List<Object> courses = dbDao.getCourses(idUser, pageNumber);
 			int numberOfCourses = dbDao.getNumberOfCourses(idUser);
-			int numberOfPage = (numberOfCourses - 1)/10 + 1;
+			int numberOfPage = (numberOfCourses - 1)/2 + 1;
 			page = JspPageName.MY_COURSES_PAGE;
 			request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, pageNumber);
 			request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);

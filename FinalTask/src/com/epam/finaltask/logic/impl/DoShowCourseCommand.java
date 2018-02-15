@@ -39,6 +39,11 @@ public final class DoShowCourseCommand implements ICommand {
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
 			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
 			Course course = dbDao.getCourse(idCourse);
+			User user = new User();
+			if(course.getIdTeacher() > 0) {
+				user = dbDao.getUser(course.getIdTeacher());
+			}
+			session.setAttribute(RequestParameterName.TEACHER,user);
 			Boolean isLogged = Boolean.valueOf(request.getParameter(RequestParameterName.IS_LOGGED));
 			if (isLogged){
 				Integer idUser = ((User) request.getSession(true).getAttribute(RequestParameterName.USER)).getIdUser();
@@ -47,6 +52,7 @@ public final class DoShowCourseCommand implements ICommand {
 			}
 			request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, pageNumber);
 			request.setAttribute(RequestParameterName.COURSE, course);
+
 			page = JspPageName.COURSE_PAGE;
 		} catch (DBDaoException e){
 			logger.error("DBDaoException is thrown when trying to show courses", e);

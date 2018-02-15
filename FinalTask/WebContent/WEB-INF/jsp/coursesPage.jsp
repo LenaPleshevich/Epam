@@ -9,26 +9,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>${listOfCourses}</title>
 <link rel="stylesheet" type="text/css" href="myStyle.css">
-
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="localization.local" var="loc"/>
 <fmt:message bundle="${loc}" key="local.listOfCourses" var="listOfCourses"/>
 <fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
-	<fmt:message bundle="${loc}" key="local.assignTeacher" var="assignTeacher"/>
-	<fmt:message bundle="${loc}" key="local.registrationOnCourse" var="registrationOnCourse"/>
+<fmt:message bundle="${loc}" key="local.assignTeacher" var="assignTeacher"/>
+<fmt:message bundle="${loc}" key="local.registrationOnCourse" var="registrationOnCourse"/>
 <fmt:message bundle="${loc}" key="local.go" var="go"/>
 <fmt:message bundle="${loc}" key="local.of" var="of"/>
 <fmt:message bundle="${loc}" key="local.messageIncorrectNumberPage" var="messageIncorrectNumberPage"/>
 <fmt:message bundle="${loc}" key="local.backToHomePage" var="backToHomePage"/>
-	<fmt:message bundle="${loc}" key="local.maxNumberStudents" var="maxNumberStudents"/>
-	<fmt:message bundle="${loc}" key="local.startDateOfCourse" var="startDateCourse"/>
-	<fmt:message bundle="${loc}" key="local.endDateOfCourse" var="endDateCourse"/>
-	<fmt:message bundle="${loc}" key="local.description" var="description"/>
-	<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
-	<fmt:message bundle="${loc}" key="local.statusCourse" var="statusCourse"/>
-	<fmt:message bundle="${loc}" key="local.idCourse" var="idCourse"/>
-	<fmt:message bundle="${loc}" key="local.emptyListCourses" var="emptyListCourses"/>
-<script type="text/javascript">
+<fmt:message bundle="${loc}" key="local.maxNumberStudents" var="maxNumberStudents"/>
+<fmt:message bundle="${loc}" key="local.startDateOfCourse" var="startDateCourse"/>
+<fmt:message bundle="${loc}" key="local.endDateOfCourse" var="endDateCourse"/>
+<fmt:message bundle="${loc}" key="local.description" var="description"/>
+<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
+<fmt:message bundle="${loc}" key="local.statusCourse" var="statusCourse"/>
+<fmt:message bundle="${loc}" key="local.idCourse" var="idCourse"/>
+<fmt:message bundle="${loc}" key="local.emptyListCourses" var="emptyListCourses"/>
+
+	<script type="text/javascript">
 <!--
 
 function validate_form ( )
@@ -55,8 +55,7 @@ function validate_form ( )
     			}
     		}
         }
-
-        return valid;
+	return valid;
 }
 
 //-->
@@ -83,7 +82,6 @@ function validate_form ( )
 	</tr>
 </table>
 <h1 id="HeaderIndexPage" >${listOfCourses}</h1>
-
 <c:choose>
 	<c:when test="${courses.size() > 0}">
 		<table id="tableCourses" align="center">
@@ -94,7 +92,6 @@ function validate_form ( )
 				<th>${endDateCourse}</th>
 				<th>${maxNumberStudents}</th>
 				<th>${description}</th>
-				<th>${idCourse}</th>
 			</tr>
 			<c:forEach var="course" items="${courses}">
 				<tr>
@@ -104,7 +101,6 @@ function validate_form ( )
 					<td>${course.endDateCourse}</td>
 					<td>${course.maxNumberStudentsCourse}</td>
 					<td>${course.description}</td>
-					<td>${course.idCourse}</td>
 					<td>
 						<form action="Controller" method="post">
 							<input type="hidden" name="pageNumber" value="${currentNumberPage}">
@@ -117,9 +113,9 @@ function validate_form ( )
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="4">
+				<td colspan="6">
 					<form name="contact_form" action="Controller" method="post" onsubmit="return validate_form ( );" >
-						<input type="hidden" name="command" value="show_my_courses">
+						<input type="hidden" name="command" value="show_courses">
 						<input type="text" name="pageNumber" value="${currentNumberPage}" class="mynumber">
 						<input type="hidden" name="numberOfPage" value="${numberOfPage}">
 							${of} ${numberOfPage}
@@ -128,7 +124,7 @@ function validate_form ( )
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="6">
 					<form action="Controller" method="post">
 						<input type="hidden" name="command" value="back_to_home_page">
 						<input type="submit" name="BackToTheHomePage" value="${ backToHomePage}" class="mybutton">
@@ -151,6 +147,5 @@ function validate_form ( )
 		</form>
 	</c:otherwise>
 </c:choose>
-
 </body>
 </html>

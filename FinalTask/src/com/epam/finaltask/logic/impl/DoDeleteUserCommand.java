@@ -5,7 +5,7 @@ import com.epam.finaltask.controller.RequestParameterName;
 import com.epam.finaltask.dao.DBDao;
 import com.epam.finaltask.dao.DBDaoFactory;
 import com.epam.finaltask.dao.DaoType;
-import com.epam.finaltask.dao.action.RoleAction;
+import com.epam.finaltask.dao.action.UserAction;
 import com.epam.finaltask.dao.entity.User;
 import com.epam.finaltask.dao.exception.DBDaoException;
 import com.epam.finaltask.logic.ICommand;
@@ -35,26 +35,24 @@ public final class DoDeleteUserCommand implements ICommand {
 		try {
 			HttpSession session = request.getSession(true);
 			String url = generateURL(request);
-			session.setAttribute(RequestParameterName.URL, url);			
-			
+			session.setAttribute(RequestParameterName.URL, url);
 			DaoType daoType = DaoType.MYSQL;
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
 			Integer idUser = Integer.parseInt(request.getParameter(RequestParameterName.ID_USER));
-			boolean deleteUser = RoleAction.deleteUser(idUser);
+			boolean deleteUser = UserAction.deleteUser(idUser);
 			if(deleteUser) {
-			List<User> users = dbDao.getUsers(pageNumber);
-			int numberOfUsers = dbDao.getNumberOfUsers();
-			int numberOfPage = (numberOfUsers - 1)/10 + 1;
-			request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, pageNumber);
-			request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);
-			JSPListBean jspListBean = new JSPListBean(users);
-			request.setAttribute(RequestParameterName.USERS, jspListBean);
-			page = JspPageName.USERS_PAGE;
+				List<User> users = dbDao.getUsers(1);
+				int numberOfUsers = dbDao.getNumberOfUsers();
+				int numberOfPage = (numberOfUsers - 1)/3 + 1;
+				request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, 1);
+				request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);
+				JSPListBean jspListBean = new JSPListBean(users);
+				request.setAttribute(RequestParameterName.USERS, jspListBean);
+				page = JspPageName.USERS_PAGE;
 			} else {
 				page = JspPageName.ERROR_PAGE;
 			}
-
 		} catch (DBDaoException e){
 			logger.error("DBDaoException is thrown when trying to delete user", e);
 			throw new CommandException("DBDaoException is thrown when trying to delete user", e);

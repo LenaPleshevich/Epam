@@ -119,7 +119,7 @@ function validate_form ( )
 				${description}
 			</td>
 			<td align="center">
-				<input type="text" name="description" class="mytext">
+				<input type="text" name="description" class="mybigtext">
 			</td>
 		</tr>
 		<tr>
@@ -135,7 +135,7 @@ function validate_form ( )
 				${startDateCourse}
 			</td>
 			<td align="center">
-			 <input type="text" name="start_date" class="mytext">
+			 <input type="text" name="start_date" class="mytext" placeholder="DD-MM-YYYY">
 			</td>
 		</tr>
 		<tr>
@@ -143,7 +143,7 @@ function validate_form ( )
 				${endDateCourse}
 			</td>
 			<td align="center">
-				<input type="text" name="end_date" class="mytext">
+				<input type="text" name="end_date" class="mytext" placeholder="DD-MM-YYYY">
 			</td>
 		</tr>
 		<tr>

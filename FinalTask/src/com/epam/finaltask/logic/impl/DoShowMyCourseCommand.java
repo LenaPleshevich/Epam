@@ -42,20 +42,20 @@ public final class DoShowMyCourseCommand implements ICommand {
 			Integer idUser = ((User)request.getSession(true).getAttribute(RequestParameterName.USER)).getIdUser();
 			Course course = dbDao.getCourse(idCourse);
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
-			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfCourses(idUser) - 1)/10 + 1)){
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfTasks(idCourse) - 1)/3 + 1)){
 				page = JspPageName.ERROR_PAGE;
 				return page;
 			}
-			List<Task> tasksOfCourse = dbDao.getTasksOfCourse(idCourse);
-			int numberOfTask = tasksOfCourse.size();
-			int numberOfPage = (numberOfTask - 1)/10 + 1;
+			List<Task> tasksOfCourse = dbDao.getTasksOfCourse(idCourse,pageNumber);
+			int numberOfTask = dbDao.getNumberOfTasks(idCourse);
+			int numberOfPage = (numberOfTask - 1)/3 + 1;
 				page = JspPageName.MY_COURSE_PAGE;
 				request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, pageNumber);
 				request.setAttribute(RequestParameterName.NAME_COURSE,course.getNameCourse());
 				request.setAttribute(RequestParameterName.TASKS, tasksOfCourse);
 				request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);
 				request.setAttribute(RequestParameterName.STATUS_COURSE, course.getStatusCourse());
-				request.setAttribute(RequestParameterName.COURSE, course);
+				session.setAttribute(RequestParameterName.COURSE, course);
 		} catch (DBDaoException e){
 			logger.error("DBDaoException is thrown when trying to show my course", e);
 			throw new CommandException("DBDaoException is thrown when trying to show my course", e);

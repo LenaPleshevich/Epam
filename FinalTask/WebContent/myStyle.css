@@ -20,9 +20,28 @@ h2 {
 	font-size:					20px;
 	color: 						#0B486B;
 }
+
+#tableMessages{
+	padding: 5%;
+    margin-left: 35%;
+    background-color:			rgba(223,236,230,0.9);
+    border-radius:				8px;
+    border-style: 				solid;
+    border-color:				#3CA2A2;
+    border-width: 				1px;
+    box-shadow:	 				0px 0px 50px 0px  #92C7A3;
+    height: 150px;
+    width: 550px;
+}
+
 #specialTable{
 	margin-left: 44%;
 }
+
+#specialTableForCoursePage{
+	margin-left: 35%;
+}
+
 #trLocalization{
 	text-shadow: 				0px 0px 5px rgb(11,72,107);
 	text-align:					center;
@@ -31,8 +50,10 @@ h2 {
 	font-weight: 				bold;
 	color:						#79BD9A;
 }
+
 #tableLogin{
-	background-color: #DFECE6;
+    margin-left: 15%;
+	background-color:			rgba(223,236,230,0.9);
 	-moz-background-size: 		100%;
     -webkit-background-size: 	100%;
     -o-background-size: 		100%;
@@ -46,8 +67,9 @@ h2 {
 	height: 					150px;
 	width: 						300px; 		
 }
+
 #tableLoginOnFailPage{
-	background-color: #DFECE6;
+	background-color:			rgba(223,236,230,0.9);
 	margin-left: 39%;
 	-moz-background-size: 		100%;
     -webkit-background-size: 	100%;
@@ -78,8 +100,8 @@ h2 {
 	width: 						130px;
 }
 #tableRegistration{
-	background-color: #DFECE6;
-	margin-left:				39%;	
+	background-color:			rgba(223,236,230,0.9);
+	margin-left:				39%;
 	-moz-background-size: 		100%;
     -webkit-background-size: 	100%;
     -o-background-size: 		100%;
@@ -91,16 +113,38 @@ h2 {
 	border-width: 				1px;
 	box-shadow:	 				0px 0px 50px 0px #ffffff;
 	height: 					150px;
-	width: 						300px; 	
+	width: 						300px;
+}
+#tableInfo{
+	background-color:			rgba(223,236,230,0.9);
+	margin-left:				35%;
+	-moz-background-size: 		100%;
+	-webkit-background-size: 	100%;
+	-o-background-size: 		100%;
+	background-size: 			100%;
+	padding:					10px;
+	border-radius:				8px;
+	border-style: 				solid;
+	border-color:				#3CA2A2;
+	border-width: 				1px;
+	box-shadow:	 				0px 0px 50px 0px #ffffff;
+	height: 					250px;
+	width: 						500px;
 }
 th.myfont{
 	font-family: Comic Sans MS;
 	color: #3B8686;
 }
+th.mybigfont{
+	font-family: Comic Sans MS;
+	color: #3B8686;
+	font-size: 25px;
+}
 td.myfont{
 	font-family: Comic Sans MS;
 	color: #3B8686;
 }
+
 td.p{
 	padding-left: 40px;
 	padding-right: 40px;
@@ -112,8 +156,8 @@ input.mynumber{
 	border-radius: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
-	box-shadow: inset 0px 0px 10px 0px #660000;
-	border-color: #666600;
+	box-shadow: inset 0px 0px 10px 0px #215a6d;
+	border-color: rgba(57, 165, 145, 0.7);
 	border-style: solid;
 	border-width: 1px;	  
 }
@@ -122,7 +166,7 @@ input.mynumber:hover{
 }
 input.mynumber:FOCUS{
 	outline: none;
-	box-shadow: 0px 0px 15px 0px #666600;
+	box-shadow: 0px 0px 15px 0px rgba(104, 166, 145, 0.65);
 }
 input.mytext{
 	text-align: center;
@@ -133,16 +177,36 @@ input.mytext{
 	padding-left: 10px;
 	padding-right: 10px;
 	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
-	border-color: #3B8686;
+	border-color: #e4e4e4;
 	border-style: solid;
-	border-width: 1px;	  
+	border-width: 1px;
 }
 input.mytext:hover{
-	box-shadow: inset 0px 0px 15px 0px rgba(13, 50, 41, 0.6);
+	box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
 }
 input.mytext:FOCUS{
 	outline: none;
-	box-shadow: 0px 0px 15px 0px #4d6600;
+	box-shadow: 0px 0px 15px 0px white;
+}
+input.mybigtext{
+	text-align: center;
+	height: 90px;
+	width: 140px;
+	font-size: 15px;
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	border-color: #3B8686;
+	border-style: solid;
+	border-width: 1px;
+}
+input.mybigtext:hover{
+	box-shadow: inset 0px 0px 15px 0px rgba(13, 50, 41, 0.6);
+}
+input.mybigtext:FOCUS{
+	outline: none;
+	box-shadow: 0px 0px 15px 0px #68a691;
 }
 input.mybutton {	
 	position: relative;
@@ -220,6 +284,7 @@ input.buttonLocalization:active {
 
 
 #tableUsers{
+    background-color: #DFECE6;
 	-moz-background-size: 100%;
     -webkit-background-size: 100%;
     -o-background-size: 100%;
@@ -228,28 +293,50 @@ input.buttonLocalization:active {
 	text-align: center;
 	border-radius: 8px;
 	border-style: solid;
-	border-color: #2D2D29;
+	border-color: #92C7A3;
 	border-width: 1px;
 	box-shadow: 0px 0px 50px 0px #ffffff;
-	height: 150px;
-	width: 800px;
+	height: 250px;
+	width: 1000px;
+	background-color:			rgba(223,236,230,0.9);
 	font-family: Comic Sans MS;
-	color: #2D2D29;
+	color: rgb(11,72,107);
+	border-spacing: 20px 15px;
 }
-#tableCourses{
-	background-color: #DFECE6;
+
+#tableForPanel{
+	background-color:			rgba(223,236,230,0.9);
 	-moz-background-size: 100%;
-    -webkit-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-	padding: 10px;
+	-webkit-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
 	text-align: center;
 	border-radius: 8px;
 	border-style: solid;
 	border-color: rgb(121,189,154);
 	border-width: 1px;
 	box-shadow: 0px 0px 50px 0px #ffffff;
-	height: 150px;
+	height: 40px;
+	width: 1150px;
+	font-family: Comic Sans MS;
+	color: rgb(11,72,107);
+	border-spacing: 20px 15px;
+}
+
+#tableCourses{
+	background-color:			rgba(223,236,230,0.9);
+	-moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+	padding: 5px;
+	text-align: center;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: rgb(121,189,154);
+	border-width: 1px;
+	box-shadow: 0px 0px 50px 0px #ffffff;
+	height: 120px;
 	width: 1150px; 
 	font-family: Comic Sans MS;
 	color: rgb(11,72,107);
@@ -257,7 +344,7 @@ input.buttonLocalization:active {
 }
 p{
 	text-indent: 40px;
-	color: #215A6D;
+	color: #215a6d;
 	font-family: Comic Sans MS;
 }
 input.myNewButton {

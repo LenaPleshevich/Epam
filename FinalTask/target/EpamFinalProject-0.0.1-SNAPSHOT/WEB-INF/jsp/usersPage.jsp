@@ -13,6 +13,8 @@
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="localization.local" var="loc"/>
 <fmt:message bundle="${loc}" key="local.listOfUsers" var="listOfUsers"/>
+	<fmt:message bundle="${loc}" key="local.student" var="student"/>
+	<fmt:message bundle="${loc}" key="local.teacher" var="teacher"/>
 <fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
 <fmt:message bundle="${loc}" key="local.go" var="go"/>
 <fmt:message bundle="${loc}" key="local.of" var="of"/>
@@ -21,6 +23,7 @@
 <fmt:message bundle="${loc}" key="local.firstName" var="firstName"/>
 <fmt:message bundle="${loc}" key="local.lastName" var="lastName"/>
 <fmt:message bundle="${loc}" key="local.email" var="email"/>
+	<fmt:message bundle="${loc}" key="local.assignTeacher" var="assignTeacher"/>
 	<fmt:message bundle="${loc}" key="local.deleteUser" var="deleteUser"/>
 	<fmt:message bundle="${loc}" key="local.changeRole" var="changeRole"/>
 
@@ -80,12 +83,11 @@ function validate_form ( )
 </table>
 <h1 id="HeaderIndexPage" >${listOfUsers}</h1>
 
-<table id="tableCourses" align="center">
+<table id="tableUsers" align="center">
 	<tr>
 		<th>${email}</th>
 		<th>${firstName}</th>
 		<th>${lastName}</th>
-		<th>${role}</th>
 	</tr>
 	<jsp:useBean id="users" class="com.epam.finaltask.tag.JSPListBean" scope="request"/>
 	<mytag:jsplist list="${users}"></mytag:jsplist>	

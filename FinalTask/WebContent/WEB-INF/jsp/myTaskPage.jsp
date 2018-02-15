@@ -8,28 +8,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>${informationAboutTask}</title>
 <link rel="stylesheet" type="text/css" href="myStyle.css">
-
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="localization.local" var="loc"/>
-
-	<fmt:message bundle="${loc}" key="local.informationAboutTask" var="informationAboutTask"/>
-	<fmt:message bundle="${loc}" key="local.backToMyTasks" var="backToMyTasks"/>
-	<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
-	<fmt:message bundle="${loc}" key="local.leaveCourse" var="leaveCourse"/>
-	<fmt:message bundle="${loc}" key="local.nameTask" var="nameTask"/>
-	<fmt:message bundle="${loc}" key="local.summary" var="summary"/>
-	<fmt:message bundle="${loc}" key="local.assignmentTime" var="assignmentTime"/>
-	<fmt:message bundle="${loc}" key="local.deadline" var="deadline"/>
-	<fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
-	<fmt:message bundle="${loc}" key="local.executeTask" var="executeTask"/>
-	<fmt:message bundle="${loc}" key="local.taskStatus" var="taskStatus"/>
-	<fmt:message bundle="${loc}" key="local.go" var="go"/>
-	<fmt:message bundle="${loc}" key="local.of" var="of"/>
-	<fmt:message bundle="${loc}" key="local.result" var="Result"/>
-	<fmt:message bundle="${loc}" key="local.feedback" var="feedback"/>
-	<fmt:message bundle="${loc}" key="local.mark" var="mark"/>
-
-	<fmt:message bundle="${loc}" key="local.messageIncorrectNumberPage" var="messageIncorrectNumberPage"/>
+<fmt:message bundle="${loc}" key="local.informationAboutTask" var="informationAboutTask"/>
+<fmt:message bundle="${loc}" key="local.backToMyTasks" var="backToMyTasks"/>
+<fmt:message bundle="${loc}" key="local.nameCourse" var="nameCourse"/>
+<fmt:message bundle="${loc}" key="local.leaveCourse" var="leaveCourse"/>
+<fmt:message bundle="${loc}" key="local.nameTask" var="nameTask"/>
+<fmt:message bundle="${loc}" key="local.summary" var="summary"/>
+<fmt:message bundle="${loc}" key="local.assignmentTime" var="assignmentTime"/>
+<fmt:message bundle="${loc}" key="local.deadline" var="deadline"/>
+<fmt:message bundle="${loc}" key="local.readMore" var="readMore"/>
+<fmt:message bundle="${loc}" key="local.executeTask" var="executeTask"/>
+<fmt:message bundle="${loc}" key="local.taskStatus" var="taskStatus"/>
+<fmt:message bundle="${loc}" key="local.result" var="result"/>
+<fmt:message bundle="${loc}" key="local.feedback" var="feedback"/>
+<fmt:message bundle="${loc}" key="local.mark" var="mark"/>
+<fmt:message bundle="${loc}" key="local.passed" var="PASSED"/>
 
 </head>
 <body>
@@ -52,6 +47,26 @@
 	</tr>
 </table>
 <h1 id="HeaderIndexPage" >${informationAboutTask}</h1>
+<c:choose>
+	<c:when test="${task.taskStatus=='PASSED'}">
+			<table id="tableCourses" align="center">
+				<tr>
+					<td colspan="5">
+							${result}
+					</td>
+
+				</tr>
+				<tr>
+					<th>${feedback}</th>
+					<th>${mark}</th>
+				</tr>
+				<tr>
+					<td>${sessionScope.result.feedback}</td>
+					<td>${sessionScope.result.mark}</td>
+				</tr>
+			</table>
+	</c:when>
+</c:choose>
 <table id="tableCourses" align="center">
 		<tr>
 			<th>${nameTask}</th>
@@ -68,26 +83,9 @@
 			<td>${task.deadline}</td>
 			<td>${task.taskStatus}</td>
 		</tr>
-
-	<c:if test="${task.taskStatus=='PASSED'}">
-
-		<table id="tableCourses" align="center">
-			<p>${Result}</p>
-			<tr>
-				<th>${feedback}</th>
-				<th>${mark}</th>
-			</tr>
-			<tr>
-				<td>${result.feedback}</td>
-				<td>${result.mark}</td>
-			</tr>
-		</table>
-	</c:if>
-
 	<c:if test="${task.taskStatus=='NOT_COMPLETED'}">
-
 		<tr>
-			<td>
+			<td colspan="5">
 				<form action="Controller" method="post">
 					<input type="hidden" name="command" value="go_to_execute_task">
 					<input type="hidden" name="idTask" value="${task.idTask}">
@@ -98,7 +96,7 @@
 		</tr>
 	</c:if>
 	<tr>
-		<td>
+		<td colspan="5">
 			<form action="Controller" method="post">
 				<input type="hidden" name="command" value="show_my_course">
 				<input type="hidden" name="pageNumber" value="${pageNumber}">
@@ -108,8 +106,5 @@
 		</td>
 	</tr>
 </table>
-
-
-
 </body>
 </html>

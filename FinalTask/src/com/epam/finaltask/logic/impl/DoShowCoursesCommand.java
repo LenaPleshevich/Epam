@@ -9,7 +9,6 @@ import com.epam.finaltask.dao.entity.Course;
 import com.epam.finaltask.dao.exception.DBDaoException;
 import com.epam.finaltask.logic.ICommand;
 import com.epam.finaltask.logic.exception.CommandException;
-import com.epam.finaltask.tag.JSPListCourseBean;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,10 +36,14 @@ public final class DoShowCoursesCommand implements ICommand {
 			session.setAttribute(RequestParameterName.URL, url);
 			DaoType daoType = DaoType.MYSQL;
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
+			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfAllCourses() - 1)/2 + 1)){
+				page = JspPageName.ERROR_PAGE;
+				return page;
+			}
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
 			List<Course> courses = dbDao.getAllCourses(pageNumber);
 			int numberOfCourses = dbDao.getNumberOfAllCourses();
-			int numberOfPage = (numberOfCourses - 1)/10 + 1;
+			int numberOfPage = (numberOfCourses - 1)/2 + 1;
 			request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, pageNumber);
 			request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);
 			request.setAttribute(RequestParameterName.COURSES, courses);

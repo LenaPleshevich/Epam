@@ -36,19 +36,17 @@ public final class DoShowUsersCommand implements ICommand {
 		try {
 			HttpSession session = request.getSession(true);
 			String url = generateURL(request);
-			session.setAttribute(RequestParameterName.URL, url);			
-			
+			session.setAttribute(RequestParameterName.URL, url);
 			DaoType daoType = DaoType.MYSQL;
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
 			List<User> users = dbDao.getUsers(pageNumber);
 			int numberOfUsers = dbDao.getNumberOfUsers();
-			int numberOfPage = (numberOfUsers - 1)/10 + 1;
+			int numberOfPage = (numberOfUsers - 1)/3 + 1;
 			request.setAttribute(RequestParameterName.CURRENT_NUMBER_PAGE, pageNumber);
 			request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, numberOfPage);
 			JSPListBean jspListBean = new JSPListBean(users);
 			request.setAttribute(RequestParameterName.USERS, jspListBean);
-					
 			page = JspPageName.USERS_PAGE;			
 		} catch (DBDaoException e){
 			logger.error("DBDaoException is thrown when trying to show users", e);

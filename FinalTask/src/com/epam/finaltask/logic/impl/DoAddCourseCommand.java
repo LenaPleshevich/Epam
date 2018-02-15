@@ -45,9 +45,9 @@ public final class DoAddCourseCommand implements ICommand {
             Course course = new Course();
             course.setNameCourse(request.getParameter(RequestParameterName.NAME_COURSE));
             course.setDescription(request.getParameter(RequestParameterName.DESCRIPTION));
-        course.setMaxNumberStudentsCourse(Integer.parseInt(request.getParameter(RequestParameterName.MAX_NUMBER_STUDENT_COURSE)));
+            course.setMaxNumberStudentsCourse(Integer.parseInt(request.getParameter(RequestParameterName.MAX_NUMBER_STUDENT_COURSE)));
             course.setStartDateCourse(request.getParameter(RequestParameterName.START_DATE_COURSE));
-           course.setEndDateCourse(request.getParameter(RequestParameterName.END_DATE_COURSE));
+            course.setEndDateCourse(request.getParameter(RequestParameterName.END_DATE_COURSE));
             course.setStatusCourse(request.getParameter(RequestParameterName.STATUS_COURSE));
             course.setIdTeacher(0);
             boolean added = dbDao.addCourse(course);

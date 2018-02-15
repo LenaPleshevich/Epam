@@ -81,17 +81,4 @@ public class Course {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "idCourse=" + idCourse +
-                ", idTeacher=" + idTeacher +
-                ", nameCourse='" + nameCourse + '\'' +
-                ", maxNumberStudentsCourse=" + maxNumberStudentsCourse +
-                ", startDateCourse='" + startDateCourse + '\'' +
-                ", endDateCourse='" + endDateCourse + '\'' +
-                ", statusCourse='" + statusCourse + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

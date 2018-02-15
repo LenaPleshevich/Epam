@@ -37,31 +37,27 @@ public final class DoGoRegistrationOnCourseCommand implements ICommand {
 			HttpSession session = request.getSession(true);
 			String url = generateURL(request);
 			session.setAttribute(RequestParameterName.URL, url);
-			
 			DaoType daoType = DaoType.MYSQL;
 			dbDao = DBDaoFactory.getInstance().getDao(daoType);
 			Integer idCourse = Integer.parseInt(request.getParameter(RequestParameterName.ID_COURSE));
-			if (Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER)) > ((dbDao.getNumberOfAllCourses() - 1)/10 + 1)){
-				page = JspPageName.ERROR_PAGE;
-				return page;
-			}
-
 			Course course = dbDao.getCourse(idCourse);
 			Integer idUser = ((User) request.getSession(true).getAttribute(RequestParameterName.USER)).getIdUser();
-			Boolean registrationOnCourse = dbDao.registrationOnCourse(idCourse,idUser);
-			Boolean checkRegistration = dbDao.checkRegistration(idCourse, idUser);
+			boolean registrationOnCourse = dbDao.registrationOnCourse(idCourse,idUser);
+			boolean checkRegistration = dbDao.checkRegistration(idCourse, idUser);
 			request.setAttribute(RequestParameterName.IS_REGISTRATION, checkRegistration);
 			Integer pageNumber = Integer.parseInt(request.getParameter(RequestParameterName.PAGE_NUMBER));
-			List<Task> listTasks = dbDao.getTasksOfCourse(idCourse);
+			List<Task> listTasks = dbDao.getAllTasksOfCourse(idCourse);
 			for(Task task:listTasks) {
 				boolean changeTasksStatus = dbDao.addTaskStatus(task.getIdTask(), idUser, TaskStatus.NOT_COMPLETED);
+
+
 				if(!changeTasksStatus){
 					page = JspPageName.ERROR_PAGE;
 				}
 			}
 			if (registrationOnCourse){
 				page = JspPageName.COURSE_PAGE;
-				int numberOfCourses = dbDao.getNumberOfCourses();
+				int numberOfCourses = dbDao.getNumberOfAllCourses();
 				request.setAttribute(RequestParameterName.NUMBER_OF_PAGE, pageNumber);
 				request.setAttribute(RequestParameterName.NUMBER_OF_COURSES, numberOfCourses);
 				request.setAttribute(RequestParameterName.COURSE, course);

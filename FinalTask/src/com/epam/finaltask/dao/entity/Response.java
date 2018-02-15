@@ -41,11 +41,4 @@ public class Response {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Response{" +
-                "idResponse=" + idResponse +
-                ", text='" + text + '\'' +
-                '}';
-    }
 }

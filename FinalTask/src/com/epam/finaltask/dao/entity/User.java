@@ -16,18 +16,23 @@ public class User {
 	public Integer getIdUser() {
 		return idUser;
 	}
+
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
+
 	public String getEmailUser() {
 		return emailUser;
 	}
+
 	public void setEmailUser(String emailUser) {
 		this.emailUser = emailUser;
 	}
+
 	public String getPasswordUser() {
 		return passwordUser;
 	}
+
 	public void setPasswordUser(String passwordUser) {
 		this.passwordUser = passwordUser;
 	}
@@ -60,18 +65,5 @@ public class User {
 	}
 	public void setLastNameUser(String lastNameUser) {
 		this.lastNameUser = lastNameUser;
-	}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"idUser=" + idUser +
-				", emailUser='" + emailUser + '\'' +
-				", passwordUser='" + passwordUser + '\'' +
-				", idRoleUser=" + idRoleUser +
-				", nameRole=" + nameRole +
-				", firstNameUser='" + firstNameUser + '\'' +
-				", lastNameUser='" + lastNameUser + '\'' +
-				'}';
 	}
 }

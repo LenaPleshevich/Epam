@@ -53,16 +53,17 @@ public final class DoExecuteTaskCommand implements ICommand {
             boolean changeStatus = dbDao.changeTaskStatus(idTask,idUser, TaskStatus.CHECKING);
             if(changeStatus) {
                 task.setTaskStatus(TaskStatus.CHECKING);
+                if (added) {
+                    page = JspPageName.MY_TASK_PAGE;
+                    request.setAttribute(RequestParameterName.PAGE_NUMBER, request.getParameter(RequestParameterName.PAGE_NUMBER));
+                    request.setAttribute(RequestParameterName.TASK, task);
+                    request.setAttribute(RequestParameterName.ID_COURSE, task.getIdCourse());
+                } else {
+                    logger.error("DBDaoException is thrown when you try to add a response");
+                    page = JspPageName.ERROR_PAGE;
+                }
             } else {
-                page = JspPageName.ERROR_PAGE;
-            }
-            if (added){
-                page = JspPageName.MY_TASK_PAGE;
-                request.setAttribute(RequestParameterName.PAGE_NUMBER, request.getParameter(RequestParameterName.PAGE_NUMBER));
-                request.setAttribute(RequestParameterName.TASK, task);
-                request.setAttribute(RequestParameterName.ID_COURSE, task.getIdCourse());
-            } else {
-                logger.error("DBDaoException is thrown when you try to add a response");
+                logger.error("DBDaoException is thrown when you try to change status");
                 page = JspPageName.ERROR_PAGE;
             }
         } catch (DBDaoException e){
